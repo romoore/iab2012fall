@@ -1,0 +1,9 @@
+*.dvi
+*.aux
+*.bbl
+*.ps
+*.pdf
+*.rtf
+*.blg
+*.log
+*~

@@ -1,0 +1,83 @@
+\documentclass[conference, 11pt]{IEEEtran}
+\usepackage{iabproject}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb,latexsym}
+\usepackage{url}
+
+
+%Change the date in \wintitle with the otpinal argument
+\wintitle[Fall 2012]{Global Name Resolution Service}
+
+%The optional argument for \winstudent is for the number of students
+%If the project has only one student, omit the optional argument.
+\winstudent[2]{Robert Moore\\
+\email{romoore@cs.rutgers.edu}\\
+Feixiong Zhang\\
+\email{feixiong@winlab.rutgers.edu}}
+
+%The optional argument for \makeadvisor is for the number of advisors
+%If the project has only one advisor, omit the optional argument.
+\winadvisor[4]{Richard P. Martin\\
+\email{rmartin@cs.rutgers.edu}\\
+Yanyong Zhang\\
+\email{yyzhang@winlab.rutgers.edu}\\
+Thu D. Nguyen\\
+\email{tdnguyen@cs.rutgers.edu}\\
+Kiran Nagaraja\\
+\email{nkiran@winlab.rutgers.edu}}
+
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+%%%%%%%%%%%%%%%%%%%
+The Global Name Resolution Service (GNRS) is a critical portion of the
+Mobility First (MF) Future Internet Architecture (FIA). Providing sub-second
+insert and retrieval of Globally Unique IDentifier (GUIDs) bindings enables
+network support of highly mobile devices, content, and information contexts.
+% TODO: This is placeholding junk.
+blah, blah, blah, FIa is great and GNRS is important. We made it better by
+throwing away a bunch of junk and making stuff more modular. Expand here and
+make the words good.
+%%%%%%%%%%%%%%%%%%%
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+GNRS provides a distributed, redundant storage network for GUID $\rightarrow$
+Network Address (NA) binding values.  By utilizing the latest secure hashing
+algorithms and replicating across multiple autonomous systems, we are able to
+scale the system to tens of thousands of nodes.  
+
+The server provides the basic functionality of the GNRS, being both the point
+of access and the storage node for the system.  Clients contact one or more
+``access'' servers (configured during network attachment) to insert bindings
+for their own GUID values, or to retrieve bindings for the GUID values found
+in application contexts.
+\subsection{Our Contribution}
+As a research prototype, the GNRS server is written to be modular, extensible,
+and configurable, and yet retains good real-world performance.  Simple
+software interfaces connect the different components, allowing each to be
+replaced or reconfigured independently of one another.
+\subsection{Related Work}
+Related
+\section{Technical Approach}
+Approach
+\subsection{A Important Subsection}
+Important
+\section{Summary of Results}
+Summary
+\section{Project Status}
+Status
+
+A new project might begin this section with  text like
+\begin{quotation}
+\em This project was started in Fall 2006. Based on our preliminary
+results, we will investigate \ldots
+\end{quotation} 
+
+\bibliographystyle{unsrt}
+%\bibliography{gnrs}
+
+\end{document}
