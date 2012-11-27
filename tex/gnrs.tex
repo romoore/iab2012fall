@@ -45,10 +45,10 @@ make the words good.
 \end{abstract}
 %%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-GNRS provides a distributed, redundant storage network for GUID $\rightarrow$
-Network Address (NA) binding values.  By utilizing the latest secure hashing
-algorithms and replicating across multiple autonomous systems, we are able to
-scale the system to tens of thousands of nodes.  
+GNRS provides a distributed, redundant storage network for
+GUID$\rightarrow$Network Address (NA) binding values.  By utilizing the latest
+secure hashing algorithms and replicating across multiple autonomous systems,
+we are able to scale the system to tens of thousands of nodes.  
 
 The server provides the basic functionality of the GNRS, being both the point
 of access and the storage node for the system.  Clients contact one or more
@@ -65,19 +65,49 @@ The previous version of the server was a patchwork of last-minute rush jobs
 and ``one-off'' contributions intended to be temporary, but which resulted in
 an discordant mish-mosh of spaghetti code.  Due to a combination of unexpected
 side-effects and undocumented functionality, the code had to be refactored.
+
+After an in-depth and thorough review of the existing source, it was decided
+that a new design, built ``from scratch'' was the best solution -- trying to
+fix the existing code piecemeal would lead to higher numbers of bugs and a
+longer development cycle. 
 \section{Technical Approach}
+The new server has been written in Java to provide a hardware- and operating
+system-agnostic implementation.  Wherever possible, standard libraries are
+utilized to provide the required functionality, and only the application logic
+needed to be written by hand.
 
-\subsection{A Important Subsection}
-Important
+The server is organized into several individual modules: network access, GUID
+mapping, persistent storage, and application logic.  The application logic
+serves as a central point of coordination within the framework of the GNRS
+server d$\ae$mon.
+
+The network access component ensures that the GNRS server is able to operate
+over any networking layer/technology without changes to the core code.  This
+replaceable component currently supports IPv4 and will be written for MF
+routing in the near future.
+
+The GUID mapping module, relying partly on a networking implementation,
+enables the server to determine the remote GNRS hosts responsible for
+maintaining the current bindings of GUID values.
+
+Persistent storage is handled indepednently from the rest of the server and
+exposes only a very simple interface, mapping to the application messages
+available in the protocol.  Currently, a BerkeleyDB provides both in-memory
+and on-disk storage for GUID bindings.  In the future we will explore external
+databases, NoSQL data stores, and other possibilities.
+
 \section{Summary of Results}
-Summary
-\section{Project Status}
-Status
+The new iteration of the server provides a more flexible, configurable way for
+GNRS deployments to be tested and deployed. Focusing on the future, we will be
+deploying to both the GENI and Orbit testbed frameworks to perform large-scale
+performance measurements and load analysis.
 
-A new project might begin this section with  text like
+\section{Project Status}
+
 \begin{quotation}
-\em This project was started in Fall 2006. Based on our preliminary
-results, we will investigate \ldots
+\em This project was started in Fall 2012. Based on our preliminary
+results, we will investigate performance and scalability metrics by deploying
+simulated global networks.
 \end{quotation} 
 
 \bibliographystyle{unsrt}
