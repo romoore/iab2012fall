@@ -112,22 +112,30 @@ The GUID mapping module, relying partly on a networking implementation,
 enables the server to determine the remote GNRS hosts responsible for
 maintaining the current bindings of GUID values.
 
-Persistent storage is handled indepednently from the rest of the server and
+Persistent storage is handled indepedently from the rest of the server and
 exposes only a very simple interface, mapping to the application messages
 available in the protocol.  Currently, a BerkeleyDB provides both in-memory
 and on-disk storage for GUID bindings.  In the future we will explore external
 databases, NoSQL data stores, and other possibilities.
 
 \section{Summary of Results}
-The new iteration of the server provides a more flexible, configurable way for
-GNRS deployments to be tested and deployed. Focusing on the future, we will be
-deploying to both the GENI and Orbit testbed frameworks to perform large-scale
-performance measurements and load analysis.
+This latest version of the GNRS server provides all of the features described
+above (modularity, flexibility, maintainability) and has equivalent
+per-instance performance characteristics when compared with the previous C/C++
+implementation.  We are currently evaluating the system in small-scale (10-50
+node) deployments, and will be scaling to thousands of instances in the
+future.
+
+During our redesign and reimplementation of the server, we have identified
+several important issues earlier than if we had not performed such an
+extensive review.  This includes the lifetimes of value bindings, caching
+opportunities and directives, and how to enable powerful client-server
+interactions while hiding the complex details of the system.
 
 \section{Project Status}
 
 \begin{quotation}
-\em This project was started in Fall 2012. Based on our preliminary
+\em This project was redesigned in Fall 2012. Based on our preliminary
 results, we will investigate performance and scalability metrics by deploying
 simulated global networks.
 \end{quotation} 
